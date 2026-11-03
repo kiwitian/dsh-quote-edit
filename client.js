@@ -86,22 +86,29 @@ window.__ModuleLoader__.load({
 
     /** Upper bound for the inline quote, so one line stays scannable at a glance. */
     const QUOTE_INLINE_LENGTH = 30;
-    /** Punctuation a shortened quote may stop before, instead of cutting a phrase in half. */
-    const CUT_MARKS = ['，', '。', '；', '：', '、', '！', '？', ',', '.', ';', ':', '!', '?'];
+    /** Sentence-ending punctuation: the best place to stop a shortened quote. */
+    const STRONG_MARKS = ['。', '！', '？', '；', '.', '!', '?', ';'];
+    /** Clause punctuation: acceptable, but only close to the limit. */
+    const WEAK_MARKS = ['，', '、', '：', ',', ':'];
 
     /** Collapse a selection to one line and trim it to the inline budget. */
     function inlineQuote(text) {
       const flat = text.replace(/\s+/g, ' ').trim();
       const chars = Array.from(flat);
       if (chars.length <= QUOTE_INLINE_LENGTH) return flat;
-      let cut = QUOTE_INLINE_LENGTH;
-      for (let index = QUOTE_INLINE_LENGTH - 1; index >= 12; index -= 1) {
-        if (CUT_MARKS.indexOf(chars[index]) !== -1) {
-          cut = index;
-          break;
-        }
+      const floor = Math.max(12, Math.floor(QUOTE_INLINE_LENGTH / 2));
+      let cut = -1;
+      for (let index = QUOTE_INLINE_LENGTH - 1; index >= floor && cut === -1; index -= 1) {
+        if (STRONG_MARKS.indexOf(chars[index]) !== -1) cut = index;
       }
-      return chars.slice(0, cut).join('').replace(/\s+$/, '') + '…';
+      for (let index = QUOTE_INLINE_LENGTH - 1; index >= floor && cut === -1; index -= 1) {
+        if (chars[index] === ' ') cut = index;
+      }
+      for (let index = QUOTE_INLINE_LENGTH - 1; index >= floor && cut === -1; index -= 1) {
+        if (WEAK_MARKS.indexOf(chars[index]) !== -1) cut = index;
+      }
+      if (cut === -1) cut = QUOTE_INLINE_LENGTH;
+      return chars.slice(0, cut).join('').replace(/[\s，、：,;:]+$/, '') + '…';
     }
 
     /** One line per quote: 【原文…】改动意见 */
