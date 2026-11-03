@@ -11,7 +11,7 @@
 github:kiwitian/dsh-quote-edit
 ```
 
-要固定版本就写 `github:kiwitian/dsh-quote-edit#v1.0.1`。装完刷新页面。
+要固定版本就写 `github:kiwitian/dsh-quote-edit#v1.0.2`。装完刷新页面。
 
 需要 DSH 0.2.x（桌面版或 `dsh web` 都行）。插件用的是 `shell.overlay`、`conversation.input.dock`
 和输入框的 `InputActions`，版本差太远可能挂不上；挂不上时胶囊不出现，不会影响其他功能。
