@@ -23,7 +23,7 @@ github:kiwitian/dsh-quote-edit
 
 1. 在回复或文档预览里选中一段文字，选区上方出现「✦ AI 编辑」。
 
-   <img src="images/1.png" width="780" alt="选中一段文字后，选区上方浮出「AI 编辑」">
+   <img src="images/1.png" width="560" alt="选中一段文字后，选区上方浮出「AI 编辑」">
 
 2. 点它，弹出小面板：上面是引用预览，下面是输入框。
 
@@ -35,7 +35,7 @@ github:kiwitian/dsh-quote-edit
    【在回复、文档预览里选中一段文字】把这个文案调整一下
    ```
 
-   <img src="images/3.png" width="780" alt="插入后，引用和意见一起落在主输入框的草稿里">
+   <img src="images/3.png" width="460" alt="插入后，引用和意见一起落在主输入框的草稿里">
 
 4. 接着选下一处，重复。所有引用都攒在同一条草稿里，最后一起发。
 
