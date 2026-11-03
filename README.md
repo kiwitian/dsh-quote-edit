@@ -47,3 +47,7 @@ github:kiwitian/dsh-quote-edit
 ## 卸载
 
 设置 → 插件 → 已安装，停用或移除 `@kiwitian/dsh-quote-edit`。删掉本目录前先移除插件。
+
+## License
+
+MIT，见 [LICENSE](LICENSE)。
